@@ -1,19 +1,19 @@
 // https://leetcode.com/problems/word-ladder-ii/
 package main
 
-type DisRecord struct {
+type DisRecords struct {
 	Val     int
 	Paths   [][]int
 	Visited bool
 }
 
-func (d *DisRecord) AddEle(ele int) {
+func (d *DisRecords) AddEle(ele int) {
 	for i := range d.Paths {
 		d.Paths[i] = append(d.Paths[i], ele)
 	}
 }
 
-func (d *DisRecord) AddPaths(paths [][]int) {
+func (d *DisRecords) AddPaths(paths [][]int) {
 	for _, p := range paths {
 		tmpP := make([]int, len(p))
 		copy(tmpP, p)
@@ -21,7 +21,7 @@ func (d *DisRecord) AddPaths(paths [][]int) {
 	}
 }
 
-func (d *DisRecord) ReplacePaths(paths [][]int) {
+func (d *DisRecords) ReplacePaths(paths [][]int) {
 	d.Paths = make([][]int, len(paths))
 	for i, p := range paths {
 		d.Paths[i] = make([]int, len(p))
@@ -48,7 +48,7 @@ func findLadders(beginWord string, endWord string, wordList []string) [][]string
 	}
 
 	initGraph(list)
-	dis := make([]*DisRecord, len(list))
+	dis := make([]*DisRecords, len(list))
 	dijkstra(0, dis)
 
 	if !dis[end].Visited {
@@ -66,16 +66,16 @@ func findLadders(beginWord string, endWord string, wordList []string) [][]string
 	return r
 }
 
-func dijkstra(begin int, dis []*DisRecord) {
+func dijkstra(begin int, dis []*DisRecords) {
 	for i := 0; i < len(dis); i++ {
-		dis[i] = &DisRecord{g[begin][i], [][]int{{begin}}, false}
+		dis[i] = &DisRecords{g[begin][i], [][]int{{begin}}, false}
 	}
 	dis[begin].Visited = true
 
 	count := 1
 	for count < len(dis) {
 		var minI int
-		minD := &DisRecord{Val: 1 << 32}
+		minD := &DisRecords{Val: 1 << 32}
 		for i, d := range dis {
 			if !d.Visited && d.Val < minD.Val {
 				minI = i
