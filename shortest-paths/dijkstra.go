@@ -1,18 +1,6 @@
 // https://leetcode.com/problems/word-ladder-ii/
 package main
 
-import (
-	"fmt"
-)
-
-func main() {
-	fmt.Println(findLadders(
-		"hit",
-		"cog",
-		[]string{"hot", "dot", "dog", "lot", "log", "cog"},
-	))
-}
-
 type DisRecord struct {
 	Val     int
 	Paths   [][]int
