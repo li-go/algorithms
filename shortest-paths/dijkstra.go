@@ -7,9 +7,9 @@ import (
 
 func main() {
 	fmt.Println(findLadders(
-		"hot",
-		"dog",
-		[]string{"hot", "dog"},
+		"hit",
+		"cog",
+		[]string{"hot", "dot", "dog", "lot", "log", "cog"},
 	))
 }
 
