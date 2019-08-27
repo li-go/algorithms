@@ -18,7 +18,10 @@ jobs:
 
     - name: Get dependencies
       run: |
+        pwd
         go get -v -t -d ./...
 
     - name: Build
-      run: make
+      run: |
+        cd $GITHUB_WORKSPACE
+        make
