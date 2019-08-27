@@ -23,5 +23,6 @@ jobs:
 
     - name: Build
       run: |
-        cd $GITHUB_WORKSPACE
+        pwd
+        go list ./...
         make
