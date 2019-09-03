@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println(findLadders(
+	fmt.Println("findLadders:", findLadders(
 		"hit",
 		"cog",
 		[]string{"hot", "dot", "dog", "lot", "log", "cog"},
